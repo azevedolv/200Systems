@@ -1,0 +1,54 @@
+POST  http://localhost:3003/api/pizzas
+Content-Type: application/json
+
+{
+    "name": "Mussarela",
+    "price": 40,
+    "ingredients": "Massa, molho de tomate e queijo mussarela."
+}
+
+###
+
+GET http://localhost:3003/api/pizzas
+
+###
+
+POST  http://localhost:3003/api/orders
+Content-Type: application/json
+
+{
+    "pizza": "Gorgonzola",
+    "quantity": 1
+}
+
+###
+
+GET http://localhost:3003/api/orders
+
+###
+
+###
+
+GET http://localhost:3003/api/orders/1
+
+###
+
+POST  http://localhost:3003/api/users/signup
+Content-Type: application/json
+
+{
+    "username": "Luiz Vinícius",
+    "email": "lv10@gmail.com",
+    "password": "lv123456"
+}
+
+###
+
+
+POST  http://localhost:3003/api/users/login
+Content-Type: application/json
+
+{
+    "email": "lv10@gmail.com",
+    "password": "lv123456"
+}
