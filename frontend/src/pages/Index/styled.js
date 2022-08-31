@@ -20,6 +20,11 @@ main{
   flex-direction: row;
   justify-content: center;
 }
+header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 `
 
 

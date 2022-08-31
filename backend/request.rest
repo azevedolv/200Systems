@@ -13,11 +13,6 @@ GET http://localhost:3003/buyers
 
 ###
 
-GET  http://localhost:3003/buyers
-Content-Type: application/json
-
-{
-    "person_code": "783c1023-a537-41e9-ba53-81f5af4ab1d6"
-}
+GET  http://localhost:3003/buyers/783c1023-a537-41e9-ba53-81f5af4ab1d6
 
 ###

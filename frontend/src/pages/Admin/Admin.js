@@ -9,6 +9,10 @@ import {Table} from 'react-bootstrap';
 import HomeIcon from '@mui/icons-material/Home';
 import { goToIndex } from '../../routes/coordinator';
 import { useGlobal } from '../../context/global/GlobalStateContext';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+
 
 function Admin() {
     const navigate = useNavigate();
@@ -21,6 +25,7 @@ function Admin() {
     const [buyers] = useRequestData(`${BASE_URL}/buyers`, [])
 
     const viewDetails = (person_code) =>{
+      // console.log(person_code);
         getIndications(person_code, setIndications)
         if(showDetails === true){
             setShowDetails(false)
@@ -40,6 +45,28 @@ function Admin() {
     )
   })
 
+  const getAllBuyers = buyers && buyers.map((buyer)=>{
+    return(
+      <>
+        <Card sx={{ minWidth: 100 }}>
+      <CardContent>
+        <Typography sx={{ fontSize: 10}} color="text.secondary" gutterBottom>
+          {buyer.person_code}
+        </Typography>
+        <Typography variant="h9" component="div">
+        {buyer.person_name}
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+        {buyer.indication_code}
+        </Typography>
+        <Typography variant="body2">
+        Points: {buyer.points}
+        </Typography>
+      </CardContent>
+    </Card>
+    </>
+    )
+  })
   return (
     <Body>
       <GlobalStyle />
@@ -50,6 +77,7 @@ function Admin() {
         <HomeContainer>
         <LeftSide>
         <TableDiv>
+       <h3>Campaign administration</h3>   
       <Table striped bordered hover variant="dark">
       <thead>
         <tr>
@@ -68,6 +96,7 @@ function Admin() {
     <DetailsCard indications={indications}/>
     :
     <>
+    {getAllBuyers}
     </>
     } 
         </RightSide>
