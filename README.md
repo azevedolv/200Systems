@@ -39,6 +39,9 @@ Utilizando a mesma URL da getBuyers, este endpoint é capaz de buscar as indica�
 
 <br>
 
+## Melhorias
+- ajustar a página "admin" para renderizar as indicações de cada comprador
+
 ## Tecnologias utilizadas:
 - Node.js
 - Typescript
