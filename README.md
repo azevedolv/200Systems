@@ -35,7 +35,7 @@ Endpoint responsável por buscar todos os compradores. Retorna "person_code", "p
 
 
 ### getBuyerIndications
-Utilizando a mesma URL da getBuyers, este endpoint é capaz de buscar as indicações de determinado comprador se via body for passado o "person_code" do mesmo. Retorna "person_name" e as "indications".
+Este endpoint é capaz de buscar as indicações de determinado comprador se via query params for passado o "person_code" do mesmo. Retorna "person_name" e as "indications".
 
 <br>
 
