@@ -67,6 +67,7 @@ Este endpoint é capaz de buscar as indicações de determinado comprador se via
 ### Conhecimentos adquiridos durante o desenvolvimento do projeto:
 - Integração com banco de dados e relações SQL.
 - Requisições API Rest.
+- Estilizações CSS.
 
 <br>
 <br>
