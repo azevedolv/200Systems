@@ -1,5 +1,6 @@
 
 import { CustomError } from "../Error/CustomError";
+import { BuyerInputDTO } from "../Model/types";
 import { BaseData } from "./BaseData"
 
 const nomeTabela = "buyers_200systems"
@@ -7,21 +8,31 @@ const nomeTabela = "buyers_200systems"
 export class BuyerData extends BaseData {
 
 
-    public async postBuyer(Buyer: {}): Promise<void | undefined> {
+    public async postBuyer(buyer: BuyerInputDTO): Promise<void | undefined> {
         try {
             await BuyerData
                 .connection(nomeTabela)
-                .insert(Buyer)
+                .insert(buyer)
         } catch (error: any) {
             throw new CustomError(400, error.sqlMessage);
         }
     }
 
-
+    public async updateBuyerPoints (points:number, person_code:string): Promise<void | undefined> {
+        try {
+            await BuyerData
+            .connection(nomeTabela)
+            .update({points})
+            .where({person_code})
+            
+        } catch (error: any) {
+            throw new CustomError(400, error.sqlMessage);
+        }
+    }
 
     public async getBuyers(): Promise<void> {
         try {
-            const results = await BuyerData.connection.raw("SELECT * FROM buyers_200systems;")
+            const results = await BuyerData.connection.raw("SELECT person_code, person_name, points FROM buyers_200systems ORDER BY points DESC;")
 
             return results[0];
         } catch (error: any) {

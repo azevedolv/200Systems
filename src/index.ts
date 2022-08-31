@@ -1,11 +1,11 @@
 import { app } from "./app";
-import { PurchaseBusiness } from "./Business/PurchaseBusiness";
-import { PurchaseController } from "./Controller/PurchaseController";
+import { IndicationBusiness } from "./Business/IndicationBusiness";
+import { IndicationController } from "./Controller/IndicationController";
 
-//purchase
-const purchaseBusiness = new PurchaseBusiness()
-const purchaseController = new PurchaseController(purchaseBusiness)
-app.get("/buyers", purchaseController.getBuyers)
-app.get("/buyers/:code", purchaseController.getBuyerByCode)
-app.post("/purchase", purchaseController.postPurchase)
+//Indication
+const indicationBusiness = new IndicationBusiness()
+const indicationController = new IndicationController(indicationBusiness)
+app.get("/buyers", indicationController.getBuyers)
+
+app.post("/purchase", indicationController.postPurchase)
 
