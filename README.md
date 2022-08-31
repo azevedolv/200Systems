@@ -40,7 +40,8 @@ Utilizando a mesma URL da getBuyers, este endpoint é capaz de buscar as indica�
 <br>
 
 ## Melhorias
-- ajustar a página "admin" para renderizar as indicações de cada comprador
+- refatorar para login/signup
+- criação de testes unitários
 
 ## Tecnologias utilizadas:
 - Node.js
