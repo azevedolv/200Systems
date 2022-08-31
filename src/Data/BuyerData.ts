@@ -1,6 +1,6 @@
 
 import { CustomError } from "../Error/CustomError";
-import { BuyerInputDTO } from "../Model/types";
+import { BuyerInputDTO, BuyerOutputDTO } from "../Model/types";
 import { BaseData } from "./BaseData"
 
 const nomeTabela = "buyers_200systems"
@@ -30,9 +30,9 @@ export class BuyerData extends BaseData {
         }
     }
 
-    public async getBuyers(): Promise<void> {
+    public async getBuyers(): Promise<BuyerOutputDTO[]> {
         try {
-            const results = await BuyerData.connection.raw("SELECT person_code, person_name, points FROM buyers_200systems ORDER BY points DESC;")
+            const results = await BuyerData.connection.raw("SELECT * FROM buyers_200systems ORDER BY points DESC;")
 
             return results[0];
         } catch (error: any) {
@@ -60,6 +60,18 @@ export class BuyerData extends BaseData {
                 .connection(nomeTabela)
                 .select("*")
                 .where({ indication_code })
+            return results[0];
+        } catch (error: any) {
+            throw new CustomError(400, error.sqlMessage);
+        }
+    }
+
+    public async consultBuyerPoints(person_code: string): Promise<any> {
+        try {
+            const results = await BuyerData
+                .connection(nomeTabela)
+                .select("points")
+                .where({ person_code })
             return results[0];
         } catch (error: any) {
             throw new CustomError(400, error.sqlMessage);

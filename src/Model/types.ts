@@ -4,6 +4,12 @@ export interface BuyerInputDTO {
     indication_code?: string;
     points: number
 }
+export interface BuyerOutputDTO {
+    person_code: string | any
+    person_name: string;
+    indication_code: string;
+    points: number
+}
 export interface PurchaseInputDTO {
     buyer_code: string | any,
     person_code_indication?: string,

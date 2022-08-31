@@ -2,7 +2,7 @@ import { BuyerData } from "../Data/BuyerData"
 import { PurchaseData } from "../Data/PurchaseData"
 import { CustomError } from "../Error/CustomError"
 
-import { BuyerInputDTO, IndicationInputDTO, PurchaseInputDTO } from "../Model/types"
+import { BuyerInputDTO, BuyerOutputDTO, IndicationInputDTO, PurchaseInputDTO } from "../Model/types"
 import { generateId } from "../Services/IdGenerator"
 import { generateIndicationCode } from "../Services/IndicationCode"
 
@@ -56,6 +56,12 @@ export class IndicationBusiness {
                 }
 
                 if (consultIndicationCode && consultIndicationCode.person_name !== person_name) {
+                    const buyers:BuyerOutputDTO[] = await new BuyerData().getBuyers()
+                    const findBuyer = buyers.find((person)=>{return person.person_name === person_name})
+                    if(findBuyer){
+                        throw new CustomError(422, "There are already a user with this name, use another.")
+                    }
+                    
                     const generateID = generateId()
                    
                     const newBuyer:BuyerInputDTO = {
@@ -82,10 +88,20 @@ export class IndicationBusiness {
 
                     const newPoints:number = consultIndicationCode.points + 1
                     await new BuyerData().updateBuyerPoints(newPoints, consultIndicationCode.person_code) //dependência
+
+                    const consultPoints = await new BuyerData().consultBuyerPoints(consultIndicationCode.person_code)
+                    
+                    if(consultPoints.points === 10){
+                        const gift = "Congrats!! 🥳🥳🥳 Take this gift for you! "
+                        const newPoint = 0
+                        await new BuyerData().updateBuyerPoints(newPoint, consultIndicationCode.person_code)
+                        
+                        return {message: "Successful purchase!", indication_code: createIndicationCode, gift: gift}
+                    }
                 }
             }
 
-            return createIndicationCode
+            return {message: "Successful purchase!", indication_code: createIndicationCode}
             
         } catch (error: any) {
             throw new CustomError(error.statusCode, error.message);
@@ -118,7 +134,7 @@ export class IndicationBusiness {
            
             const output = {
                 person_name: whoIndicated.person_name,
-                indication: filterPurchases
+                indications: filterPurchases
             }
             return output
         } catch (error: any) {

@@ -17,7 +17,7 @@ export class IndicationController {
             const result = await this.indicationBusiness.postPurchase(purchase)
             // console.log(result);
 
-            res.status(201).send({ message: "Successful purchase!", indication_code: result })
+            res.status(201).send(result)
 
         } catch (error: any) {
             const { statusCode, message } = error
@@ -34,7 +34,7 @@ export class IndicationController {
             const {person_code} = req.body
             if(!person_code){
                 const buyers = await this.indicationBusiness.getBuyers()
-                res.status(200).send({ buyers })
+                res.status(200).send(buyers)
             }
             if(person_code){
                 const result = await this.indicationBusiness.getBuyerByCode(person_code)

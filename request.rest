@@ -2,8 +2,8 @@ POST  http://localhost:3003/purchase
 Content-Type: application/json
 
 {
-    "person_name": "Jazz",
-    "product_name": "Whiskas",
+    "person_name": "Monica",
+    "product_name": "Forno de pizza",
     "indication_code": "cUDFwV"
 }
 

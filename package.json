@@ -73,9 +73,11 @@
   },
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
-    "start": "tsc && node ./build/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "tsc"
   },
+  "engines": {"node": "v16.16.0"},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/azevedolv/200Systems.git"
