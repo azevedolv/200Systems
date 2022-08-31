@@ -6,6 +6,6 @@ import { IndicationController } from "./Controller/IndicationController";
 const indicationBusiness = new IndicationBusiness()
 const indicationController = new IndicationController(indicationBusiness)
 app.get("/buyers", indicationController.getBuyers)
-
+app.get("/buyers/:person_code", indicationController.getBuyerIndications)
 app.post("/purchase", indicationController.postPurchase)
 

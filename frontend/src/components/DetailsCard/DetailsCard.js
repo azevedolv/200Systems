@@ -12,6 +12,7 @@ export default function DetailsCard({indications}) {
   
 
   const tableMap = indications.indications && indications.indications.map((buy)=>{
+
     return(
       <>
         <tr key={buy.buyer_code}>
@@ -25,7 +26,7 @@ export default function DetailsCard({indications}) {
   })
   return (
     <TableDiv>
-      <p>{indications.person_name}</p>
+      <p>Indicator's Name: {indications.person_name}</p>
       <Table striped bordered hover variant="dark">
       <thead>
         <tr>

@@ -119,7 +119,7 @@ export class IndicationBusiness {
         }
     }
 
-    async getBuyerByCode(person_code:number) {
+    async getBuyerByCode(person_code:string) {
         try {
             const whoIndicated = await new BuyerData().getBuyerByPersonCode(person_code)
             if(!whoIndicated){

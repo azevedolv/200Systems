@@ -31,6 +31,7 @@ function IndexPage() {
       <main>
         <HomeContainer>
       <LeftSide>
+        <h1>Buy our awsome product!</h1>
           <InputText setIndication_code={setIndication_code} setGiftMessage={setGiftMessage} setSuccessfulMessage={setSuccessfulMessage} />
       </LeftSide>
       <RightSide>

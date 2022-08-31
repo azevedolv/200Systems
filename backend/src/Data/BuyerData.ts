@@ -41,7 +41,7 @@ export class BuyerData extends BaseData {
     }
 
 
-    public async getBuyerByPersonCode(person_code: number): Promise<any> {
+    public async getBuyerByPersonCode(person_code: string): Promise<any> {
         try {
             const results = await BuyerData
                 .connection(nomeTabela)

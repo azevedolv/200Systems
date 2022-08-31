@@ -32,15 +32,10 @@ export   const postPurchase = (form, clear, setIndication_code, setGiftMessage, 
 }
 
     export   const getIndications = (person_code, setIndications) =>{
-        const url = `${BASE_URL}/buyers`;
-        const headers = {
-                'Content-Type': 'application/json'
-        }
-        const body = {
-            "person_code": person_code,
-        }
+        const url = `${BASE_URL}/buyers/${person_code}`;
+        
         // console.log(body);
-        axios.get(url, body, headers)
+        axios.get(url)
         .then((response) =>{
             console.log(response);
             setIndications(response.data)
