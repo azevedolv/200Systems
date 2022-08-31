@@ -43,6 +43,7 @@ table{
   
 }
 `
+
 export const HomeContainer = styled.div`
     height: 100vh;
     width: 100vw;
@@ -78,6 +79,7 @@ justify-content: center;
 align-items: center;
 gap:1%;
 padding-bottom: 10vh;
+overflow: scroll;
 @media screen and (max-device-width : 900px){
     height: 50vh;
     width: 100vw;
@@ -94,4 +96,14 @@ padding-bottom: 10vh;
     bottom: 4vh;
 }
 }
+`
+export const CardDiv = styled.div`
+display: flex;
+margin:40px;
+padding:15px;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+gap:1%;
+row-gap: 1%;
 `

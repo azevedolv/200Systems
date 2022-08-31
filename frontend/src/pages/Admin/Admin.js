@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Body, GlobalStyle, HomeContainer, LeftSide, RightSide, TableDiv } from './styled';
+import { Body, CardDiv, GlobalStyle, HomeContainer, LeftSide, RightSide, TableDiv } from './styled';
 import useRequestData from '../../hooks/useRequestData'
 import { BASE_URL } from '../../constants/urls';
 import { useNavigate } from 'react-router-dom';
@@ -57,7 +57,7 @@ function Admin() {
         {buyer.person_name}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-        {buyer.indication_code}
+        Promotional code: {buyer.indication_code}
         </Typography>
         <Typography variant="body2">
         Points: {buyer.points}
@@ -95,9 +95,9 @@ function Admin() {
             {showDetails === true ?
     <DetailsCard indications={indications}/>
     :
-    <>
+    <CardDiv>
     {getAllBuyers}
-    </>
+    </CardDiv>
     } 
         </RightSide>
         </HomeContainer>
